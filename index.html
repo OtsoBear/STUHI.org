@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STUHI</title>
+    <link rel="icon" href="./assets/favicon.ico">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+    <style>
+        /* Add these animation styles at the top */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        .fade-in.active {
+            animation: fadeInDown 0.6s ease-out forwards;
+        }
+
+        /* App-wide styling */
+        body {
+            background-color: #0a0a0a; /* Darker Black */
+            color: #e0e0e0; /* Light Gray */
+            font-family: 'Poppins', sans-serif;
+            margin: 20px;
+        }
+
+        #hero {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #links {
+            width: 400px;
+            text-align: left;
+            font-size: x-large;
+            color: #e0e0e0; /* Light Gray */
+            display: flex;
+            flex-direction: column;
+        }
+
+        #links a {
+            color: #e0e0e0; /* Light Gray */
+            text-decoration: none;
+            margin-top: 20px;
+            margin: 10px 0px;
+            border: #e0e0e0 1px solid;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        #links a:hover {
+            background-color: #1a1a1a; /* Darker Gray */
+            cursor: pointer;
+        }
+
+        #header {
+            max-width: 1200px;
+        }
+
+        #contact-us {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-items {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: .2s linear;
+        }
+
+        .contact-item img {
+            width: 50px;
+            height: auto;
+            border-radius: 0; /* Remove border radius specifically for contact images */
+        }
+
+        .contact-item img {
+            width: 50px;
+            height: auto;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .instagram, .mail {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: .2s linear;
+        }
+
+        .instagram:hover, .mail:hover {
+            transform: translateY(-10px);
+        }
+
+        .instagram img, .mail img {
+            width: 100%;
+            height: 100%;
+            border-radius: 0; /* Ensure no border radius */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        #what-we-do {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 1200px;
+            position: relative;
+        }
+
+        .card {
+            position: relative;
+            width: 30%;
+            margin: 10px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            z-index: 1; /* Default z-index */
+            height: 400px; /* Fixed height */
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+            z-index: 2; /* Hovered card on top */
+        }
+
+        .card-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 2; /* Make sure card content stays on top */
+            background: rgba(0, 0, 0, 0.27); /* Glass effect */
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            -webkit-backdrop-filter: blur(4px); /* WebKit browsers support */
+            backdrop-filter: blur(4px); /* Apply blur effect to card content */
+            border: 1px solid rgba(0, 0, 0, 1);
+            padding: 20px;
+            color: #e0e0e0; /* Light Gray */
+            height: 100%; /* Ensure content fills the card */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .logo {
+            width: 350px;
+            height: auto;
+            margin-top: -150px;
+            margin-bottom: 150px;
+        }
+
+        .spacer {
+            height: 50px;
+        }
+
+        .slogan {
+            font-size: 2.5em;
+            text-align: center;
+            margin: 20px 0;
+            color: #e0e0e0; /* Light Gray */
+        }
+
+        .sub-slogan {
+            font-size: 1.5em;
+            text-align: center;
+            margin-top: -15px;
+            margin-bottom: 150px;
+            color: #a0a0a0; /* Gray */
+            font-weight: normal;
+        }
+
+        .textbox {
+            background-color: #000000; /* Pitch Black */
+            border: 1px solid #e0e0e0; /* Light Gray */
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px auto; /* Center the box */
+            width: 80%;
+            max-width: 800px;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+            max-height: 200px;
+            text-align: center;
+        }
+
+        .textbox:hover {
+            max-height: 1000px;
+        }
+
+        .textbox .content {
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .textbox .more-content {
+            display: none;
+        }
+
+        .textbox:hover .more-content {
+            display: block;
+        }
+
+        .read-more {
+            background: #ff6600; /* Orange */
+            border: none;
+            color: #e0e0e0; /* Light Gray */
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .read-more:hover {
+            background: #800080; /* Purple */
+        }
+
+        .toggle-button {
+            background: #ff6600; /* Orange */
+            border: none;
+            color: #e0e0e0; /* Light Gray */
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .toggle-button:hover {
+            background: #800080; /* Purple */
+        }
+
+        .centered {
+            text-align: center;
+        }
+
+        h2 {
+            color: #ff6600; /* Orange */
+        }
+
+        a {
+            color: #800080; /* Purple */
+        }
+
+        a:hover {
+            color: #ff6600; /* Orange */
+        }
+
+        .team-section {
+            padding: 2.5rem 1rem;
+            background-color: #0a0a0a; /* Darker Black */
+        }
+
+        .team-section .container {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .team-section .text-center {
+            text-align: center;
+        }
+
+        .team-section h2 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ff6600; /* Orange */
+        }
+
+        .team-section p {
+            max-width: 28rem;
+            margin: 1rem auto;
+            font-size: 1rem;
+            color: #a0a0a0; /* Gray */
+        }
+
+        .team-section .grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .team-section .grid.grid-cols-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .team-section .grid.grid-cols-4 {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .team-section .team-member {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 150px; /* Fixed width */
+        }
+
+        .team-section .team-member img {
+            width: 7rem;
+            height: 7rem;
+            object-fit: cover;
+            border-radius: 0.5rem;
+        }
+
+        .team-section .team-member p {
+            margin-top: 1rem; /* Adjusted margin */
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #e0e0e0; /* Light Gray */
+            white-space: nowrap; /* Prevent line breaks */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%; /* Ensure text fits within the fixed width */
+            text-align: center; /* Center align text */
+        }
+
+        .team-section .team-member p + p {
+            margin-top: 0.25rem;
+            font-size: 1rem;
+            color: #a0a0a0; /* Gray */
+            width: 100%; /* Ensure text fits within the fixed width */
+            text-align: center; /* Center align text */
+        }
+
+        .team-title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ff6600; /* Orange */
+            margin-bottom: 0.5rem;
+        }
+
+        .team-subtitle {
+            max-width: 28rem;
+            margin: 0.5rem auto;
+            font-size: 1rem;
+            color: #a0a0a0; /* Gray */
+        }
+
+        .team-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .team-member {
+            flex: 0 1 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0.5rem;
+        }
+
+        .team-img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+        }
+
+        .team-name {
+            margin-top: 1rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #e0e0e0;
+            text-align: center;
+        }
+
+        .team-role {
+            margin-top: 0.25rem;
+            font-size: 1rem;
+            color: #a0a0a0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .team-grid {
+                gap: 1.5rem;
+            }
+
+            .team-member {
+                flex: 0 1 150px;
+            }
+
+            .team-img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .team-name {
+                font-size: 1rem;
+            }
+
+            .team-role {
+                font-size: 0.875rem;
+            }
+        }
+
+        /* Flip Card Styles */
+        @import url('https://fonts.googleapis.com/css?family=Lato');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .flip-card-container {
+            --hue: 150;
+            --primary: hsl(var(--hue), 50%, 50%);
+            --white-1: hsl(0, 0%, 90%);
+            --white-2: hsl(0, 0%, 80%);
+            --dark: hsl(var(--hue), 25%, 10%);
+            --grey: hsl(0, 0%, 50%);
+            width: 310px;
+            height: 500px;
+            margin: 40px;
+            perspective: 1000px;
+        }
+        .flip-card {
+            width: inherit;
+            height: inherit;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: .6s .1s;
+        }
+        .flip-card-container:hover .flip-card,
+        .flip-card-container:focus-within .flip-card {
+            transform: rotateY(180deg);
+        }
+        .card-front,
+        .card-back {
+            width: 100%;
+            height: 100%;
+            border-radius: 24px;
+            background: var(--dark);
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card-front {
+            transform: rotateY(0deg);
+            z-index: 2;
+        }
+        .card-back {
+            transform: rotateY(180deg);
+            z-index: 1;
+        }
+        figure {
+            z-index: -1;
+        }
+        figure,
+        .img-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        img {
+            height: 100%;
+            border-radius: 24px;
+        }
+        figcaption {
+            display: block;
+            width: auto;
+            margin-top: 12%;
+            padding: 8px 22px;
+            font-weight: bold;
+            line-height: 1.6;
+            letter-spacing: 2px;
+            word-spacing: 6px;
+            text-align: right;
+            position: absolute;
+            top: 0;
+            right: 12px;
+            color: var(--white-1);
+            background: hsla(var(--hue), 25%, 10%, .5);
+        }
+        .img-bg {
+            background: hsla(var(--hue), 25%, 10%, .5);
+        }
+        .card-front .img-bg {
+            clip-path: polygon(0 20%, 100% 40%, 100% 100%, 0 100%);
+        }
+        .card-front .img-bg::before {
+            content: "";
+            position: absolute;
+            top: 34%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(18deg);
+            width: 100%;
+            height: 6px;
+            border: 1px solid var(--primary);
+            border-left-color: transparent;
+            border-right-color: transparent;
+            transition: .1s;
+        }
+        .card-back .img-bg {
+            clip-path: polygon(0 0, 100% 0, 100% 80%, 0 60%);
+        }
+        .flip-card-container:hover .card-front .img-bg::before {
+            width: 6px;
+            border-left-color: var(--primary);
+            border-right-color: var(--primary);
+        }
+        ul {
+            padding-top: 50%;
+            margin: 0 auto;
+            width: 70%;
+            height: 100%;
+            list-style: none;
+            color: var(--white-1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        li {
+            width: 100%;
+            margin-top: 12px;
+            padding-bottom: 12px;
+            font-size: 14px;
+            text-align: center;
+            position: relative;
+        }
+        li:nth-child(2n) {
+            color: var(--white-2);
+        }
+        li:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: currentColor;
+            opacity: .2;
+        }
+        button {
+            font-family: inherit;
+            font-weight: bold;
+            color: var(--white-1);
+            letter-spacing: 2px;
+            padding: 9px 20px;
+            border: 1px solid var(--grey);
+            border-radius: 1000px;
+            background: transparent;
+            transition: .3s;
+            cursor: pointer;
+        }
+        button:hover,
+        button:focus {
+            color: var(--primary);
+            background: hsla(var(--hue), 25%, 10%, .2);
+            border-color: currentColor;
+        }
+        button:active {
+            transform: translate(2px);
+        }
+        .design-container {
+            --tr: 90;
+            --op: .5;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        .design {
+            display: block;
+            background: var(--grey);
+            position: absolute;
+            opacity: var(--op);
+            transition: .3s;
+        }
+        .design--1,
+        .design--2,
+        .design--3,
+        .design--4 {
+            width: 1px;
+            height: 100%;
+        }
+        .design--1,
+        .design--2 {
+            top: 0;
+            transform: translateY(calc((var(--tr) - (var(--tr) * 2)) * 1%));
+        }
+        .design--1 {
+            left: 20%;
+        }
+        .design--2 {
+            left: 80%;
+        }
+        .design--3,
+        .design--4 {
+            bottom: 0;
+            transform: translateY(calc((var(--tr) + (var(--tr) - var(--tr))) * 1%));
+        }
+        .design--3 {
+            left: 24%;
+        }
+        .design--4 {
+            left: 76%;
+        }
+        .design--5,
+        .design--6,
+        .design--7,
+        .design--8 {
+            width: 100%;
+            height: 1px;
+        }
+        .design--5,
+        .design--6 {
+            left: 0;
+            transform: translateX(calc((var(--tr) - (var(--tr) * 2)) * 1%));
+        }
+        .design--5 {
+            top: 41%;
+        }
+        .design--6 {
+            top: 59%;
+        }
+        .design--7,
+        .design--8 {
+            right: 0;
+            transform: translateX(calc((var(--tr) + (var(--tr) - var(--tr))) * 1%));
+        }
+        .design--7 {
+            top: 44%;
+        }
+        .design--8 {
+            top: 56%;
+        }
+        button:hover+.design-container,
+        button:active+.design-container,
+        button:focus+.design-container {
+            --tr: 20;
+            --op: .7;
+        }
+
+        /* Add these new styles for the readme section */
+        .readme-container {
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            padding: 20px;
+            margin-bottom: 50px;
+        }
+        
+        /* Copy over the rest of the styles from your readme code */
+        .btn {
+            font-size: 1.2rem;
+            border: none;
+            outline: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            background: white;
+            color: black;
+            margin-top: 0vh;
+            margin-bottom: 0vh;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .hinge {
+            padding: 10px 20px;
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 1.4px;
+            background: white;
+            color: black;
+            transform-origin: top left;
+        }
+        
+        .animated {
+            animation: buttonFall 2s ease-in-out forwards;
+        }
+        
+        @keyframes buttonFall {
+            20%, 60% {
+                transform: rotate(70deg);
+            }
+            40%, 80% {
+                transform: rotate(55deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(600px);
+                opacity: 0;
+            }
+        }
+        
+        .cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a; /* Changed from black to match website background */
+            transition: transform 1.0s ease-in-out;
+            z-index: 0; /* Changed from 9 to 0 */
+        }
+        
+        .cover.move-down {
+            transform: translateY(100%);
+        }
+        
+        .readme-content {
+            max-width: 600px;
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            background-color: #0a0a0a;
+            z-index: -1; /* Changed from 8 to -1 */
+        }
+        
+        .readme-content p {
+            margin-bottom: 1.5em;
+            line-height: 1.6;
+        }
+
+        /* Add this to customize the C2A figcaption */
+        .programs-caption {
+            font-size: 1.5em !important;
+            padding: 12px 26px !important;
+        }
+
+        /* Add this for the beliefs heading */
+        .beliefs-heading {
+            color: #ff6600;
+            font-size: 1.3em;
+            font-weight: bold;
+            border-bottom: 2px solid #ff6600;
+            padding-bottom: 5px;
+            margin: 1.5em 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="./assets/stuhi_white.png" alt="STUHI Logo" class="logo fade-in">
+        <h1 class="slogan fade-in">Be Dumb or Be Curious;</h1>
+        <h2 class="sub-slogan fade-in">What you lack in experience, make it up in curiosity</h2>
+
+        <!-- Add the readme section here -->
+        <div class="readme-container fade-in">
+            <button id="readMoreBtn" class="btn hinge">Read More</button>
+            
+            <div class="readme-content">
+                <p>We're changing entrepreneurial culture within Finnish society. Why? In the past few decades Finland's experienced sluggish economic growth.</p>
+                <p>We're built for high schoolers by high schoolers and recent graduates, opening the gates to explore and meet the people pushing innovation forward and giving agency to those who want to build challenging, ambitious and creative things.</p>
+                <p>If you're a high schooler reading this. StuHi is a different way of thinking and an opportunity to challenge yourself through growth & curiosity — Your sign to stop wasting time on social media and start doing something interesting with your life.</p>
+                <p>We're a non-profit with a LOW BAR FOR ENTRY to any High school student or recent graduate out there! (even partners ;)</p>
+                <p class="beliefs-heading">OUR BELIEFS</p>
+                <p>Entrepreneurship is a mindset and can create more impact on a larger scale.</p>
+                <p>Technology and science can solve our world's most challenging problems, don't be afraid to experiment. (Best thing that could happen is you fail)</p>
+            </div>
+            
+            <div class="cover" id="cover"></div>
+        </div>
+
+        <!-- Hero Section -->
+        <div id="hero" class="fade-in">
+            <img src="./assets/header.svg" id="header">
+        </div>
+
+        <!-- Spacer -->
+        <div class="spacer fade-in"></div>
+
+        <!-- Manifesto Section -->
+
+
+        <!-- What We Do Section -->
+        <section id="what-we-do" class="fade-in">
+            <h2>What we do</h2>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+                <!-- Flip Card 1 -->
+                <div class="flip-card-container" style="--hue: 220">
+                    <div class="flip-card">
+                        <div class="card-front">
+                            <figure>
+                                <div class="img-bg"></div>
+                                <img src="./assets/events.jpeg" alt="Events Background">
+                                <figcaption class="programs-caption">Events</figcaption>
+                            </figure>
+                            <ul>
+                                <li>Unconventional events</li>
+                                <li>Growth entrepreneurship</li>
+                                <li>Building cool sh*t</li>
+                                <li>Startups</li>
+                            </ul>
+                        </div>
+                        <div class="card-back">
+                            <figure>
+                                <div class="img-bg"></div>
+                                <img src="./assets/events.jpeg" alt="Events Background">
+                            </figure>
+                            <button class="learn-more-btn" data-url="https://lu.ma/u94u6hf6">Learn More</button>
+                            <div class="design-container">
+                                <span class="design design--1"></span>
+                                <span class="design design--2"></span>
+                                <span class="design design--3"></span>
+                                <span class="design design--4"></span>
+                                <span class="design design--5"></span>
+                                <span class="design design--6"></span>
+                                <span class="design design--7"></span>
+                                <span class="design design--8"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flip Card 2 -->
+                <div class="flip-card-container" style="--hue: 280">
+                    <div class="flip-card">
+                        <div class="card-front">
+                            <figure>
+                                <div class="img-bg"></div>
+                                <img src="./assets/c2a.jpg" alt="Programs Background">
+                                <figcaption class="programs-caption">Programs</figcaption>
+                            </figure>
+                            <ul>
+                                <li>Time and spaces</li>
+                                <li>Mentors</li>
+                                <li>Ambitious ideas</li>
+                                <li>Creative projects</li>
+                            </ul>
+                        </div>
+                        <div class="card-back">
+                            <figure>
+                                <div class="img-bg"></div>
+                                <img src="./assets/c2a.jpg" alt="Programs Background">
+                            </figure>
+                            <button class="learn-more-btn" data-url="https://lu.ma/u94u6hf6">Learn More</button>
+                            <div class="design-container">
+                                <span class="design design--1"></span>
+                                <span class="design design--2"></span>
+                                <span class="design design--3"></span>
+                                <span class="design design--4"></span>
+                                <span class="design design--5"></span>
+                                <span class="design design--6"></span>
+                                <span class="design design--7"></span>
+                                <span class="design design--8"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flip Card 3 -->
+                <div class="flip-card-container" style="--hue: 350">
+                    <div class="flip-card">
+                        <div class="card-front">
+                            <figure>
+                                <div class="img-bg"></div>
+                                <img src="./assets/community.jpg" alt="Community Background">
+                                <figcaption class="programs-caption">Community</figcaption>
+                            </figure>
+                            <ul>
+                                <li>Young innovators</li>
+                                <li>Growth entrepreneurship</li>
+                                <li>Building cool sh*t</li>
+                                <li>Global impact</li>
+                            </ul>
+                        </div>
+                        <div class="card-back">
+                            <figure>
+                                <div class="img-bg"></div>
+                                <img src="./assets/community.jpg" alt="Community Background">
+                            </figure>
+                            <button class="learn-more-btn" data-url="https://lu.ma/u94u6hf6">Learn More</button>
+                            <div class="design-container">
+                                <span class="design design--1"></span>
+                                <span class="design design--2"></span>
+                                <span class="design design--3"></span>
+                                <span class="design design--4"></span>
+                                <span class="design design--5"></span>
+                                <span class="design design--6"></span>
+                                <span class="design design--7"></span>
+                                <span class="design design--8"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="team-section fade-in">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="team-title">Meet The Team</h2>
+                    <p class="team-subtitle">Making it all possible</p>
+                </div>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img class="team-img" src="./assets/personplaceholder.svg">
+                        <p class="team-name">Emily Johnson</p>
+                        <p class="team-role">Project Manager</p>
+                    </div>
+                    <div class="team-member">
+                        <img class="team-img" src="./assets/personplaceholder.svg">
+                        <p class="team-name">William Cooper</p>
+                        <p class="team-role">COO</p>
+                    </div>
+                    <div class="team-member">
+                        <img class="team-img" src="./assets/personplaceholder.svg">
+                        <p class="team-name">Ava Smith</p>
+                        <p class="team-role">Founder</p>
+                    </div>
+                    <div class="team-member">
+                        <img class="team-img" src="./assets/personplaceholder.svg">
+                        <p class="team-name">Harper Martinez</p>
+                        <p class="team-role">Senior Developer</p>
+                    </div>
+                    <div class="team-member">
+                        <img class="team-img" src="./assets/personplaceholder.svg">
+                        <p class="team-name">Noah Wilson</p>
+                        <p class="team-role">Product Designer</p>
+                    </div>
+                    <div class="team-member">
+                        <img class="team-img" src="./assets/personplaceholder.svg">
+                        <p class="team-name">Caleb Mitchell</p>
+                        <p class="team-role">DevOps Engineer</p>
+                    </div>
+                    <div class="team-member">
+                        <img class="team-img" src="./assets/personplaceholder.svg">
+                        <p class="team-name">Charlotte Smith</p>
+                        <p class="team-role">H.R</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Us Section -->
+        <section id="contact-us" class="fade-in">
+            <h2>Contact Us</h2>
+            <div class="contact-items">
+                <a href="https://instagram.com/stuhi.hq/" class="contact-item" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" alt="Instagram">
+                </a>
+                <a href="mailto:stuhi.contact@gmail.com" class="contact-item" target="_blank">
+                    <img src="./assets/mail.svg" alt="Email" style="width: 50px; height: auto;">
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Add this script before the closing body tag -->
+    <script>
+        // Existing read more button code
+        document.getElementById("readMoreBtn").addEventListener("click", function() {
+            this.classList.add("animated");
+            setTimeout(() => {
+                document.getElementById("cover").classList.add("move-down");
+            }, 1420);
+        });
+
+        // Existing fade-in animation code
+        document.addEventListener("DOMContentLoaded", function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            let delay = 100;
+
+            fadeElements.forEach((element, index) => {
+                setTimeout(() => {
+                    element.classList.add('active');
+                }, delay * index);
+            });
+            
+            // Add this new code for button links
+            document.querySelectorAll('.learn-more-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const url = this.getAttribute('data-url');
+                    if (url) {
+                        window.open(url, '_blank');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

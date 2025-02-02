@@ -81,6 +81,7 @@
         .contact-items {
             display: flex;
             justify-content: center;
+            align-items: center; /* Add this line */
             gap: 20px;
         }
 
@@ -88,7 +89,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center; /* Add this line */
             transition: .2s linear;
+            height: 70px; /* Add this line */
         }
 
         .contact-item img {
@@ -100,6 +103,13 @@
         .contact-item img {
             width: 50px;
             height: auto;
+        }
+
+        /* Add this specific style for mail icon */
+        .contact-item img[alt*="Email"] {
+            width: 60px;
+            height: auto;
+            transform: translateY(-2%); /* Add this line to fine-tune vertical position */
         }
 
         .contact-item:hover {
@@ -409,28 +419,6 @@
             flex-direction: column;
             align-items: center;
             margin: 0.5rem;
-        }
-
-        .team-img {
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 0.5rem;
-        }
-
-        .team-name {
-            margin-top: 1rem;
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: #e0e0e0;
-            text-align: center;
-        }
-
-        .team-role {
-            margin-top: 0.25rem;
-            font-size: 1rem;
-            color: #a0a0a0;
-            text-align: center;
         }
 
         @media (max-width: 768px) {
@@ -804,11 +792,55 @@
             padding-bottom: 5px;
             margin: 1.5em 0;
         }
+
+        /* Update media queries for better responsive design */
+        @media (max-width: 1200px) {
+            .team-grid {
+                max-width: 900px;
+            }
+            .team-member {
+                flex: 0 1 180px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .team-grid {
+                max-width: 600px;
+                gap: 1.5rem;
+            }
+            .team-member {
+                flex: 0 1 160px;
+            }
+            .team-img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .team-grid {
+                max-width: 300px;
+                gap: 1rem;
+            }
+            .team-member {
+                flex: 0 1 140px;
+            }
+            .team-img {
+                width: 90px;
+                height: 90px;
+            }
+            .team-name {
+                font-size: 0.9rem;
+            }
+            .team-role {
+                font-size: 0.8rem;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="./assets/stuhi_white.png" alt="STUHI Logo" class="logo fade-in">
+        <img src="./assets/stuhi_white.png" alt="STUHI organization logo in white" class="logo fade-in">
         <h1 class="slogan fade-in">Be Dumb or Be Curious;</h1>
         <h2 class="sub-slogan fade-in">What you lack in experience, make it up in curiosity</h2>
 
@@ -831,7 +863,7 @@
 
         <!-- Hero Section -->
         <div id="hero" class="fade-in">
-            <img src="./assets/header.svg" id="header">
+            <img src="./assets/header.svg" id="header" alt="Decorative header image with abstract design">
         </div>
 
         <!-- Spacer -->
@@ -850,7 +882,7 @@
                         <div class="card-front">
                             <figure>
                                 <div class="img-bg"></div>
-                                <img src="./assets/events.jpeg" alt="Events Background">
+                                <img src="./assets/events.jpeg" alt="Students participating in STUHI events and workshops">
                                 <figcaption class="programs-caption">Events</figcaption>
                             </figure>
                             <ul>
@@ -863,7 +895,7 @@
                         <div class="card-back">
                             <figure>
                                 <div class="img-bg"></div>
-                                <img src="./assets/events.jpeg" alt="Events Background">
+                                <img src="./assets/events.jpeg" alt="Students participating in STUHI events and workshops">
                             </figure>
                             <button class="learn-more-btn" data-url="https://lu.ma/u94u6hf6">Learn More</button>
                             <div class="design-container">
@@ -886,7 +918,7 @@
                         <div class="card-front">
                             <figure>
                                 <div class="img-bg"></div>
-                                <img src="./assets/c2a.jpg" alt="Programs Background">
+                                <img src="./assets/c2a.jpg" alt="Students collaborating in STUHI educational programs">
                                 <figcaption class="programs-caption">Programs</figcaption>
                             </figure>
                             <ul>
@@ -899,7 +931,7 @@
                         <div class="card-back">
                             <figure>
                                 <div class="img-bg"></div>
-                                <img src="./assets/c2a.jpg" alt="Programs Background">
+                                <img src="./assets/c2a.jpg" alt="Students collaborating in STUHI educational programs">
                             </figure>
                             <button class="learn-more-btn" data-url="https://lu.ma/u94u6hf6">Learn More</button>
                             <div class="design-container">
@@ -922,7 +954,7 @@
                         <div class="card-front">
                             <figure>
                                 <div class="img-bg"></div>
-                                <img src="./assets/community.jpg" alt="Community Background">
+                                <img src="./assets/community.jpg" alt="STUHI community members working together">
                                 <figcaption class="programs-caption">Community</figcaption>
                             </figure>
                             <ul>
@@ -935,7 +967,7 @@
                         <div class="card-back">
                             <figure>
                                 <div class="img-bg"></div>
-                                <img src="./assets/community.jpg" alt="Community Background">
+                                <img src="./assets/community.jpg" alt="STUHI community members working together">
                             </figure>
                             <button class="learn-more-btn" data-url="https://lu.ma/u94u6hf6">Learn More</button>
                             <div class="design-container">
@@ -963,37 +995,37 @@
                 </div>
                 <div class="team-grid">
                     <div class="team-member">
-                        <img class="team-img" src="./assets/personplaceholder.svg">
+                        <img class="team-img" src="./assets/personplaceholder.svg" alt="Emily Johnson - Project Manager at STUHI">
                         <p class="team-name">Emily Johnson</p>
                         <p class="team-role">Project Manager</p>
                     </div>
                     <div class="team-member">
-                        <img class="team-img" src="./assets/personplaceholder.svg">
+                        <img class="team-img" src="./assets/personplaceholder.svg" alt="William Cooper - Chief Operating Officer at STUHI">
                         <p class="team-name">William Cooper</p>
                         <p class="team-role">COO</p>
                     </div>
                     <div class="team-member">
-                        <img class="team-img" src="./assets/personplaceholder.svg">
+                        <img class="team-img" src="./assets/personplaceholder.svg" alt="Ava Smith - Founder of STUHI">
                         <p class="team-name">Ava Smith</p>
                         <p class="team-role">Founder</p>
                     </div>
                     <div class="team-member">
-                        <img class="team-img" src="./assets/personplaceholder.svg">
+                        <img class="team-img" src="./assets/personplaceholder.svg" alt="Harper Martinez - Senior Developer at STUHI">
                         <p class="team-name">Harper Martinez</p>
                         <p class="team-role">Senior Developer</p>
                     </div>
                     <div class="team-member">
-                        <img class="team-img" src="./assets/personplaceholder.svg">
+                        <img class="team-img" src="./assets/personplaceholder.svg" alt="Noah Wilson - Product Designer at STUHI">
                         <p class="team-name">Noah Wilson</p>
                         <p class="team-role">Product Designer</p>
                     </div>
                     <div class="team-member">
-                        <img class="team-img" src="./assets/personplaceholder.svg">
+                        <img class="team-img" src="./assets/personplaceholder.svg" alt="Caleb Mitchell - DevOps Engineer at STUHI">
                         <p class="team-name">Caleb Mitchell</p>
                         <p class="team-role">DevOps Engineer</p>
                     </div>
                     <div class="team-member">
-                        <img class="team-img" src="./assets/personplaceholder.svg">
+                        <img class="team-img" src="./assets/personplaceholder.svg" alt="Charlotte Smith - Human Resources at STUHI">
                         <p class="team-name">Charlotte Smith</p>
                         <p class="team-role">H.R</p>
                     </div>
@@ -1006,10 +1038,10 @@
             <h2>Contact Us</h2>
             <div class="contact-items">
                 <a href="https://instagram.com/stuhi.hq/" class="contact-item" target="_blank">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" alt="Instagram">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" alt="STUHI Instagram profile - Follow us for updates">
                 </a>
                 <a href="mailto:stuhi.contact@gmail.com" class="contact-item" target="_blank">
-                    <img src="./assets/mail.svg" alt="Email" style="width: 50px; height: auto;">
+                    <img src="./assets/mail.svg" alt="Email icon - Contact STUHI via email">
                 </a>
             </div>
         </section>

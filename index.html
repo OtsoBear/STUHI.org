@@ -28,6 +28,48 @@
             animation: fadeInDown 0.6s ease-out forwards;
         }
 
+        /* Add these new styles for the bouncing arrow */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-7px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .arrow {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0yOTMuNzUxLDQ1NS44NjhjLTIwLjE4MSwyMC4xNzktNTMuMTY1LDE5LjkxMy03My42NzMtMC41OTVsMCwwYy0yMC41MDgtMjAuNTA4LTIwLjc3My01My40OTMtMC41OTQtNzMuNjcyICBsMTg5Ljk5OS0xOTBjMjAuMTc4LTIwLjE3OCw1My4xNjQtMTkuOTEzLDczLjY3MiwwLjU5NWwwLDBjMjAuNTA4LDIwLjUwOSwyMC43NzIsNTMuNDkyLDAuNTk1LDczLjY3MUwyOTMuNzUxLDQ1NS44Njh6Ii8+DQo8cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNMjIwLjI0OSw0NTUuODY4YzIwLjE4LDIwLjE3OSw1My4xNjQsMTkuOTEzLDczLjY3Mi0wLjU5NWwwLDBjMjAuNTA5LTIwLjUwOCwyMC43NzQtNTMuNDkzLDAuNTk2LTczLjY3MiAgbC0xOTAtMTkwYy0yMC4xNzgtMjAuMTc4LTUzLjE2NC0xOS45MTMtNzMuNjcxLDAuNTk1bDAsMGMtMjAuNTA4LDIwLjUwOS0yMC43NzIsNTMuNDkyLTAuNTk1LDczLjY3MUwyMjAuMjQ5LDQ1NS44Njh6Ii8+DQo8L3N2Zz4=');
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-left: 5px;
+            vertical-align: middle;
+            filter: invert(1);
+            transition: filter 0.3s ease;
+        }
+
+        .btn:hover .arrow {
+            filter: invert(0);
+        }
+
+        .bounce {
+            animation: bounce 2s infinite;
+        }
+
+        /* Modify the Read More button style */
+        .btn.hinge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
         /* App-wide styling */
         body {
             background-color: #0a0a0a; /* Darker Black */
@@ -91,31 +133,30 @@
             align-items: center;
             justify-content: center; /* Add this line */
             transition: .2s linear;
-            height: 70px; /* Add this line */
+            height: 100px; /* Increased from 70px */
         }
 
         .contact-item img {
-            width: 50px;
+            width: 80px;
             height: auto;
-            border-radius: 0; /* Remove border radius specifically for contact images */
+            border-radius: 0;
         }
 
-        .contact-item img {
-            width: 50px;
-            height: auto;
+        /* Add specific styling for Instagram logo */
+        .contact-item[href*="instagram"] img {
+            width: 120px;
         }
 
-        /* Add this specific style for mail icon */
-        .contact-item img[alt*="Email"] {
-            width: 60px;
-            height: auto;
-            transform: translateY(-2%); /* Add this line to fine-tune vertical position */
+        /* Specific styling for mail logo */
+        .contact-item[href*="mailto"] img {
+            width: 77px;
         }
 
         .contact-item:hover {
             transform: translateY(-10px);
         }
 
+        
         .instagram, .mail {
             position: relative;
             width: 100px;
@@ -528,13 +569,12 @@
             top: 0;
             right: 0; /* Changed from 12px to 0 */
             color: var(--white-1);
-            background: hsla(var(--hue), 25%, 10%, .5);
         }
         .img-bg {
             background: hsla(var(--hue), 25%, 10%, .5);
         }
         .card-front .img-bg {
-            clip-path: polygon(0 20%, 100% 40%, 100% 100%, 0 100%);
+            clip-path: polygon(0% 100, 100% 0%, 0% 100%, 0 100%);
         }
         .card-front .img-bg::before {
             content: "";
@@ -550,7 +590,7 @@
             transition: .1s;
         }
         .card-back .img-bg {
-            clip-path: polygon(0 0, 100% 0, 100% 80%, 0 60%);
+            clip-path: polygon(0% 100, 100% 0%, 0% 100%, 0 100%);
         }
         .flip-card-container:hover .card-front .img-bg::before {
             width: 6px;
@@ -758,7 +798,7 @@
             width: 100%;
             height: 100%;
             background: #0a0a0a; /* Changed from black to match website background */
-            transition: transform 1.0s ease-in-out;
+            transition: transform 0.8s ease-in-out;
             z-index: 0; /* Changed from 9 to 0 */
         }
         
@@ -841,6 +881,33 @@
                 font-size: 0.8rem;
             }
         }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        .fade-out {
+            animation: fadeOut 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeOutArrow {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+
+        .arrow-fade-out {
+            animation: fadeOutArrow 0.3s ease-out forwards;
+        }
     </style>
 </head>
 <body>
@@ -851,7 +918,10 @@
 
         <!-- Add the readme section here -->
         <div class="readme-container fade-in">
-            <button id="readMoreBtn" class="btn hinge">Read More</button>
+            <button id="readMoreBtn" class="btn hinge">
+                Read More
+                <span class="arrow bounce"></span>
+            </button>
             
             <div class="readme-content">
                 <p>We're changing entrepreneurial culture within Finnish society. Why? In the past few decades Finland's experienced sluggish economic growth.</p>
@@ -1040,7 +1110,7 @@
             <h2>Contact Us</h2>
             <div class="contact-items">
                 <a href="https://instagram.com/stuhi.hq/" class="contact-item" target="_blank" rel="noopener">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" alt="STUHI Instagram profile - Follow us for updates">
+                    <img src="./assets/instagrambw.png" alt="STUHI Instagram profile - Follow us for updates">
                 </a>
                 <a href="mailto:stuhi.contact@gmail.com" class="contact-item" target="_blank">
                     <img src="./assets/mail.svg" alt="Email icon - Contact STUHI via email">
@@ -1053,10 +1123,14 @@
     <script>
         // Existing read more button code
         document.getElementById("readMoreBtn").addEventListener("click", function() {
-            this.classList.add("animated");
+            const arrow = this.querySelector('.arrow');
+            arrow.classList.add('arrow-fade-out');
             setTimeout(() => {
-                document.getElementById("cover").classList.add("move-down");
-            }, 1420);
+                this.classList.add("animated");
+                setTimeout(() => {
+                    document.getElementById("cover").classList.add("move-down");
+                }, 1490);
+            }, 300); // Wait for arrow fade out to complete
         });
 
         // Existing fade-in animation code

@@ -203,9 +203,9 @@
         }
 
         .logo {
-            width: 350px;
+            width: 150px;
             height: auto;
-            margin-top: -150px;
+            margin-top: -70px;
             margin-bottom: 150px;
         }
 
@@ -261,9 +261,9 @@
         }
 
         .read-more {
-            background: #ff6600; /* Orange */
+            background: #ffffff; /* White instead of orange */
             border: none;
-            color: #e0e0e0; /* Light Gray */
+            color: #000000; /* Black */
             padding: 10px 20px;
             text-align: center;
             text-decoration: none;
@@ -275,13 +275,13 @@
         }
 
         .read-more:hover {
-            background: #800080; /* Purple */
+            background: #e0e0e0; /* Light gray on hover */
         }
 
         .toggle-button {
-            background: #ff6600; /* Orange */
+            background: #ffffff; /* White instead of orange */
             border: none;
-            color: #e0e0e0; /* Light Gray */
+            color: #000000; /* Black */
             padding: 10px 20px;
             text-align: center;
             text-decoration: none;
@@ -293,7 +293,7 @@
         }
 
         .toggle-button:hover {
-            background: #800080; /* Purple */
+            background: #e0e0e0; /* Light gray on hover */
         }
 
         .centered {
@@ -301,18 +301,18 @@
         }
 
         h2 {
-            color: #ff6600; /* Orange */
+            color: #ffffff; /* White instead of orange */
             font-size: 2.5rem; /* Standardize size for all section headings */
             font-weight: bold;
             margin-bottom: 0.5rem;
         }
 
         a {
-            color: #800080; /* Purple */
+            color: #ffffff; /* White instead of purple */
         }
 
         a:hover {
-            color: #ff6600; /* Orange */
+            color: #e0e0e0; /* Light gray instead of orange */
         }
 
         .team-section {
@@ -333,7 +333,7 @@
         .team-section h2 {
             font-size: 3rem;
             font-weight: bold;
-            color: #ff6600; /* Orange */
+            color: #ffffff; /* White instead of orange */
         }
 
         .team-section p {
@@ -516,17 +516,17 @@
         }
         figcaption {
             display: block;
-            width: auto;
+            width: 100%; /* Changed from auto to 100% */
             margin-top: 12%;
             padding: 8px 22px;
             font-weight: bold;
             line-height: 1.6;
             letter-spacing: 2px;
             word-spacing: 6px;
-            text-align: right;
+            text-align: center; /* Changed from right to center */
             position: absolute;
             top: 0;
-            right: 12px;
+            right: 0; /* Changed from 12px to 0 */
             color: var(--white-1);
             background: hsla(var(--hue), 25%, 10%, .5);
         }
@@ -580,6 +580,7 @@
         li:nth-child(2n) {
             color: var(--white-2);
         }
+        /* Remove this block to eliminate separator lines
         li:not(:last-child)::after {
             content: "";
             position: absolute;
@@ -590,6 +591,7 @@
             background: currentColor;
             opacity: .2;
         }
+        */
         button {
             font-family: inherit;
             font-weight: bold;
@@ -783,14 +785,15 @@
         .programs-caption {
             font-size: 1.5em !important;
             padding: 12px 26px !important;
+            text-align: center !important;
         }
 
         /* Add this for the beliefs heading */
         .beliefs-heading {
-            color: #ff6600;
+            color: #ffffff; /* White instead of orange */
             font-size: 1.3em;
             font-weight: bold;
-            border-bottom: 2px solid #ff6600;
+            border-bottom: 2px solid #ffffff; /* White instead of orange */
             padding-bottom: 5px;
             margin: 1.5em 0;
         }
@@ -889,7 +892,6 @@
                             </figure>
                             <ul>
                                 <li>Unconventional events</li>
-                                <li>Growth entrepreneurship</li>
                                 <li>Building cool sh*t</li>
                                 <li>Startups</li>
                             </ul>
@@ -924,7 +926,6 @@
                                 <figcaption class="programs-caption">Programs</figcaption>
                             </figure>
                             <ul>
-                                <li>Time and spaces</li>
                                 <li>Mentors</li>
                                 <li>Ambitious ideas</li>
                                 <li>Creative projects</li>
@@ -962,7 +963,6 @@
                             <ul>
                                 <li>Young innovators</li>
                                 <li>Growth entrepreneurship</li>
-                                <li>Building cool sh*t</li>
                                 <li>Global impact</li>
                             </ul>
                         </div>

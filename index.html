@@ -648,7 +648,7 @@
             border-color: currentColor;
         }
         button:active {
-            transform: translate(2px);
+            transform: translateY(2px);
         }
         .design-container {
             --tr: 90;
@@ -777,14 +777,19 @@
         @keyframes buttonFall {
             20%, 60% {
                 transform: rotate(70deg);
+                background-color: transparent;
             }
             40%, 80% {
                 transform: rotate(55deg);
                 opacity: 1;
+                background-color: transparent;
+
             }
             100% {
                 transform: translateY(100vh);
                 opacity: 0;
+                background-color: transparent;
+
             }
         }
         

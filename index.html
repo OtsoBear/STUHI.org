@@ -3,940 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STUHI</title>
     <link rel="icon" href="./assets/favicon.ico">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
-    <style>
-        /* Add these animation styles at the top */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-
-        .fade-in.active {
-            animation: fadeInDown 0.6s ease-out forwards;
-        }
-
-        /* Add these new styles for the bouncing arrow */
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-7px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-
-        .arrow {
-            display: inline-block;
-            width: 25px;
-            height: 25px;
-            background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0yOTMuNzUxLDQ1NS44NjhjLTIwLjE4MSwyMC4xNzktNTMuMTY1LDE5LjkxMy03My42NzMtMC41OTVsMCwwYy0yMC41MDgtMjAuNTA4LTIwLjc3My01My40OTMtMC41OTQtNzMuNjcyICBsMTg5Ljk5OS0xOTBjMjAuMTc4LTIwLjE3OCw1My4xNjQtMTkuOTEzLDczLjY3MiwwLjU5NWwwLDBjMjAuNTA4LDIwLjUwOSwyMC43NzIsNTMuNDkyLDAuNTk1LDczLjY3MUwyOTMuNzUxLDQ1NS44Njh6Ii8+DQo8cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNMjIwLjI0OSw0NTUuODY4YzIwLjE4LDIwLjE3OSw1My4xNjQsMTkuOTEzLDczLjY3Mi0wLjU5NWwwLDBjMjAuNTA5LTIwLjUwOCwyMC43NzQtNTMuNDkzLDAuNTk2LTczLjY3MiAgbC0xOTAtMTkwYy0yMC4xNzgtMjAuMTc4LTUzLjE2NC0xOS45MTMtNzMuNjcxLDAuNTk1bDAsMGMtMjAuNTA4LDIwLjUwOS0yMC43NzIsNTMuNDkyLTAuNTk1LDczLjY3MUwyMjAuMjQ5LDQ1NS44Njh6Ii8+DQo8L3N2Zz4=');
-            background-size: contain;
-            background-repeat: no-repeat;
-            margin-left: 5px;
-            vertical-align: middle;
-            filter: invert(1);
-            transition: filter 0.3s ease;
-        }
-
-        .btn:hover .arrow {
-            filter: invert(0);
-        }
-
-        .bounce {
-            animation: bounce 2s infinite;
-        }
-
-        /* Modify the Read More button style */
-        .btn.hinge {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        /* App-wide styling */
-        body {
-            background-color: #0a0a0a; /* Darker Black */
-            color: #e0e0e0; /* Light Gray */
-            font-family: 'Poppins', sans-serif;
-            margin: 20px;
-        }
-
-        #hero {
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #links {
-            width: 400px;
-            text-align: left;
-            font-size: x-large;
-            color: #e0e0e0; /* Light Gray */
-            display: flex;
-            flex-direction: column;
-        }
-
-        #links a {
-            color: #e0e0e0; /* Light Gray */
-            text-decoration: none;
-            margin-top: 20px;
-            margin: 10px 0px;
-            border: #e0e0e0 1px solid;
-            border-radius: 5px;
-            padding: 10px;
-        }
-
-        #links a:hover {
-            background-color: #1a1a1a; /* Darker Gray */
-            cursor: pointer;
-        }
-
-        #header {
-            max-width: 1200px;
-        }
-
-        #contact-us {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .contact-items {
-            display: flex;
-            justify-content: center;
-            align-items: center; /* Add this line */
-            gap: 20px;
-        }
-
-        .contact-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center; /* Add this line */
-            transition: .2s linear;
-            height: 100px; /* Increased from 70px */
-        }
-
-        .contact-item img {
-            width: 80px;
-            height: auto;
-            border-radius: 0;
-        }
-
-        /* Add specific styling for Instagram logo */
-        .contact-item[href*="instagram"] img {
-            width: 120px;
-        }
-
-        /* Specific styling for mail logo */
-        .contact-item[href*="mailto"] img {
-            width: 77px;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-10px);
-        }
-
-        
-        .instagram, .mail {
-            position: relative;
-            width: 100px;
-            height: 100px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: .2s linear;
-        }
-
-        .instagram:hover, .mail:hover {
-            transform: translateY(-10px);
-        }
-
-        .instagram img, .mail img {
-            width: 100%;
-            height: 100%;
-            border-radius: 0; /* Ensure no border radius */
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        #what-we-do {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 20px 0;
-        }
-
-        .cards {
-            display: flex;
-            justify-content: space-around;
-            width: 100%;
-            max-width: 1200px;
-            position: relative;
-        }
-
-        .card {
-            position: relative;
-            width: 30%;
-            margin: 10px;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            z-index: 1; /* Default z-index */
-            height: 400px; /* Fixed height */
-        }
-
-        .card:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
-            z-index: 2; /* Hovered card on top */
-        }
-
-        .card-bg {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
-        }
-
-        .card-content {
-            position: relative;
-            z-index: 2; /* Make sure card content stays on top */
-            background: rgba(0, 0, 0, 0.27); /* Glass effect */
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            -webkit-backdrop-filter: blur(4px); /* WebKit browsers support */
-            backdrop-filter: blur(4px); /* Apply blur effect to card content */
-            border: 1px solid rgba(0, 0, 0, 1);
-            padding: 20px;
-            color: #e0e0e0; /* Light Gray */
-            height: 100%; /* Ensure content fills the card */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .logo {
-            width: 150px;
-            height: auto;
-            margin-top: -70px;
-            margin-bottom: 150px;
-        }
-
-        .spacer {
-            height: 50px;
-        }
-
-        .slogan {
-            font-size: 2.5em;
-            text-align: center;
-            margin: 20px 0;
-            color: #e0e0e0; /* Light Gray */
-        }
-
-        .sub-slogan {
-            font-size: 1.5em;
-            text-align: center;
-            margin-top: -15px;
-            margin-bottom: 150px;
-            color: #a0a0a0; /* Gray */
-            font-weight: normal;
-        }
-
-        .textbox {
-            background-color: #000000; /* Pitch Black */
-            border: 1px solid #e0e0e0; /* Light Gray */
-            border-radius: 10px;
-            padding: 20px;
-            margin: 10px auto; /* Center the box */
-            width: 80%;
-            max-width: 800px;
-            overflow: hidden;
-            transition: max-height 0.5s ease-in-out;
-            max-height: 200px;
-            text-align: center;
-        }
-
-        .textbox:hover {
-            max-height: 1000px;
-        }
-
-        .textbox .content {
-            opacity: 1;
-            transition: opacity 0.5s ease-in-out;
-        }
-
-        .textbox .more-content {
-            display: none;
-        }
-
-        .textbox:hover .more-content {
-            display: block;
-        }
-
-        .read-more {
-            background: #ffffff; /* White instead of orange */
-            border: none;
-            color: #000000; /* Black */
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 10px 0;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .read-more:hover {
-            background: #e0e0e0; /* Light gray on hover */
-        }
-
-        .toggle-button {
-            background: #ffffff; /* White instead of orange */
-            border: none;
-            color: #000000; /* Black */
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 10px 0;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .toggle-button:hover {
-            background: #e0e0e0; /* Light gray on hover */
-        }
-
-        .centered {
-            text-align: center;
-        }
-
-        h2 {
-            color: #ffffff; /* White instead of orange */
-            font-size: 2.5rem; /* Standardize size for all section headings */
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        a {
-            color: #ffffff; /* White instead of purple */
-        }
-
-        a:hover {
-            color: #e0e0e0; /* Light gray instead of orange */
-        }
-
-        .team-section {
-            padding: 2.5rem 1rem;
-            background-color: #0a0a0a; /* Darker Black */
-        }
-
-        .team-section .container {
-            max-width: 80rem;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        .team-section .text-center {
-            text-align: center;
-        }
-
-        .team-section h2 {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #ffffff; /* White instead of orange */
-        }
-
-        .team-section p {
-            max-width: 28rem;
-            margin: 1rem auto;
-            font-size: 1rem;
-            color: #a0a0a0; /* Gray */
-        }
-
-        .team-section .grid {
-            display: grid;
-            gap: 2rem;
-            margin-top: 2rem;
-            text-align: center;
-        }
-
-        .team-section .grid.grid-cols-3 {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        .team-section .grid.grid-cols-4 {
-            grid-template-columns: repeat(4, 1fr);
-        }
-
-        .team-section .team-member {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 150px; /* Fixed width */
-        }
-
-        .team-section .team-member img {
-            width: 7rem;
-            height: 7rem;
-            object-fit: cover;
-            border-radius: 0.5rem;
-        }
-
-        .team-section .team-member p {
-            margin-top: 1rem;
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: #e0e0e0;
-            width: 100%;
-            text-align: center;
-        }
-
-        .team-section .team-member p + p {
-            margin-top: 0.25rem;
-            font-size: 1rem;
-            color: #a0a0a0;
-            width: 100%;
-            text-align: center;
-        }
-
-        .team-title {
-            color: #ff6600;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .team-subtitle {
-            max-width: 28rem;
-            margin: 0.5rem auto;
-            font-size: 1rem;
-            color: #a0a0a0; /* Gray */
-        }
-
-        .team-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-            margin: 2rem auto;
-            max-width: 1200px;
-            padding: 0 1rem;
-        }
-
-        .team-member {
-            flex: 0 1 200px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .team-grid {
-                gap: 1.5rem;
-            }
-
-            .team-member {
-                flex: 0 1 150px;
-            }
-
-            .team-img {
-                width: 100px;
-                height: 100px;
-            }
-
-            .team-name {
-                font-size: 1rem;
-            }
-
-            .team-role {
-                font-size: 0.875rem;
-            }
-        }
-
-        /* Flip Card Styles */
-        @import url('https://fonts.googleapis.com/css?family=Lato');
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        .flip-card-container {
-            --hue: 150;
-            --primary: hsl(var(--hue), 50%, 50%);
-            --white-1: hsl(0, 0%, 90%);
-            --white-2: hsl(0, 0%, 80%);
-            --dark: hsl(var(--hue), 25%, 10%);
-            --grey: hsl(0, 0%, 50%);
-            width: 310px;
-            height: 500px;
-            margin: 40px;
-            perspective: 1000px;
-        }
-        .flip-card {
-            width: inherit;
-            height: inherit;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: .6s .1s;
-        }
-        .flip-card-container:hover .flip-card,
-        .flip-card-container:focus-within .flip-card {
-            transform: rotateY(180deg);
-        }
-        .card-front,
-        .card-back {
-            width: 100%;
-            height: 100%;
-            border-radius: 24px;
-            background: var(--dark);
-            position: absolute;
-            top: 0;
-            left: 0;
-            overflow: hidden;
-            backface-visibility: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .card-front {
-            transform: rotateY(0deg);
-            z-index: 2;
-        }
-        .card-back {
-            transform: rotateY(180deg);
-            z-index: 1;
-        }
-        figure {
-            z-index: -1;
-        }
-        figure,
-        .img-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        img {
-            height: 100%;
-            border-radius: 24px;
-        }
-        figcaption {
-            display: block;
-            width: 100%; /* Changed from auto to 100% */
-            margin-top: 12%;
-            padding: 8px 22px;
-            font-weight: bold;
-            line-height: 1.6;
-            letter-spacing: 2px;
-            word-spacing: 6px;
-            text-align: center; /* Changed from right to center */
-            position: absolute;
-            top: 0;
-            right: 0; /* Changed from 12px to 0 */
-            color: var(--white-1);
-        }
-        .img-bg {
-            background: hsla(var(--hue), 25%, 10%, .5);
-        }
-        .card-front .img-bg {
-            clip-path: polygon(0% 100, 100% 0%, 0% 100%, 0 100%);
-        }
-        .card-front .img-bg::before {
-            content: "";
-            position: absolute;
-            top: 34%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(18deg);
-            width: 100%;
-            height: 6px;
-            border: 1px solid var(--primary);
-            border-left-color: transparent;
-            border-right-color: transparent;
-            transition: .1s;
-        }
-        .card-back .img-bg {
-            clip-path: polygon(0% 100, 100% 0%, 0% 100%, 0 100%);
-        }
-        .flip-card-container:hover .card-front .img-bg::before {
-            width: 6px;
-            border-left-color: var(--primary);
-            border-right-color: var(--primary);
-        }
-        ul {
-            padding-top: 50%;
-            margin: 0 auto;
-            width: 70%;
-            height: 100%;
-            list-style: none;
-            color: var(--white-1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        li {
-            width: 100%;
-            margin-top: 12px;
-            padding-bottom: 12px;
-            font-size: 14px;
-            text-align: center;
-            position: relative;
-        }
-        li:nth-child(2n) {
-            color: var(--white-2);
-        }
-        /* Remove this block to eliminate separator lines
-        li:not(:last-child)::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: currentColor;
-            opacity: .2;
-        }
-        */
-        button {
-            font-family: inherit;
-            font-weight: bold;
-            color: var(--white-1);
-            letter-spacing: 2px;
-            padding: 9px 20px;
-            border: 1px solid var(--grey);
-            border-radius: 1000px;
-            background: transparent;
-            transition: .3s;
-            cursor: pointer;
-        }
-        button:hover,
-        button:focus {
-            color: var(--primary);
-            background: hsla(var(--hue), 25%, 10%, .2);
-            border-color: currentColor;
-        }
-        button:active {
-            transform: translateY(2px);
-        }
-        .design-container {
-            --tr: 90;
-            --op: .5;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            position: absolute;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-        }
-        .design {
-            display: block;
-            background: var(--grey);
-            position: absolute;
-            opacity: var(--op);
-            transition: .3s;
-        }
-        .design--1,
-        .design--2,
-        .design--3,
-        .design--4 {
-            width: 1px;
-            height: 100%;
-        }
-        .design--1,
-        .design--2 {
-            top: 0;
-            transform: translateY(calc((var(--tr) - (var(--tr) * 2)) * 1%));
-        }
-        .design--1 {
-            left: 20%;
-        }
-        .design--2 {
-            left: 80%;
-        }
-        .design--3,
-        .design--4 {
-            bottom: 0;
-            transform: translateY(calc((var(--tr) + (var(--tr) - var(--tr))) * 1%));
-        }
-        .design--3 {
-            left: 24%;
-        }
-        .design--4 {
-            left: 76%;
-        }
-        .design--5,
-        .design--6,
-        .design--7,
-        .design--8 {
-            width: 100%;
-            height: 1px;
-        }
-        .design--5,
-        .design--6 {
-            left: 0;
-            transform: translateX(calc((var(--tr) - (var(--tr) * 2)) * 1%));
-        }
-        .design--5 {
-            top: 41%;
-        }
-        .design--6 {
-            top: 59%;
-        }
-        .design--7,
-        .design--8 {
-            right: 0;
-            transform: translateX(calc((var(--tr) + (var(--tr) - var(--tr))) * 1%));
-        }
-        .design--7 {
-            top: 44%;
-        }
-        .design--8 {
-            top: 56%;
-        }
-        button:hover+.design-container,
-        button:active+.design-container,
-        button:focus+.design-container {
-            --tr: 20;
-            --op: .7;
-        }
-
-        /* Add these new styles for the readme section */
-        .readme-container {
-            min-height: 50vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-            padding: 20px;
-            margin-bottom: 50px;
-        }
-        
-        /* Copy over the rest of the styles from your readme code */
-        .btn {
-            font-size: 1.2rem;
-            border: none;
-            outline: none;
-            padding: 10px 20px;
-            border-radius: 10px;
-            cursor: pointer;
-            background: white;
-            color: black;
-            margin-top: 0vh;
-            margin-bottom: 0vh;
-            position: relative;
-            z-index: 10;
-        }
-        
-        .hinge {
-            padding: 10px 20px;
-            font-size: 2rem;
-            font-weight: bold;
-            letter-spacing: 1.4px;
-            background: white;
-            color: black;
-            transform-origin: top left;
-        }
-        
-        .animated {
-            animation: buttonFall 2s ease-in-out forwards;
-        }
-        
-        @keyframes buttonFall {
-            20%, 60% {
-                transform: rotate(70deg);
-                background-color: transparent;
-            }
-            40%, 80% {
-                transform: rotate(55deg);
-                opacity: 1;
-                background-color: transparent;
-
-            }
-            100% {
-                transform: translateY(100vh);
-                opacity: 0;
-                background-color: transparent;
-
-            }
-        }
-        
-        .cover {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #0a0a0a; /* Changed from black to match website background */
-            transition: transform 0.4s ease-in-out;
-            z-index: 0; /* Changed from 9 to 0 */
-        }
-        
-        .cover.move-down {
-            transform: translateY(100%);
-        }
-        
-        .readme-content {
-            max-width: 600px;
-            width: 90%;
-            margin: 0 auto;
-            padding: 20px;
-            position: relative;
-            background-color: #0a0a0a;
-            z-index: -1; /* Changed from 8 to -1 */
-        }
-        
-        .readme-content p {
-            margin-bottom: 1.5em;
-            line-height: 1.6;
-        }
-
-        /* Add this to customize the C2A figcaption */
-        .programs-caption {
-            font-size: 1.5em !important;
-            padding: 12px 26px !important;
-            text-align: center !important;
-        }
-
-        /* Add this for the beliefs heading */
-        .beliefs-heading {
-            color: #ffffff; /* White instead of orange */
-            font-size: 1.3em;
-            font-weight: bold;
-            border-bottom: 2px solid #ffffff; /* White instead of orange */
-            padding-bottom: 5px;
-            margin: 1.5em 0;
-        }
-
-        /* Update media queries for better responsive design */
-        @media (max-width: 1200px) {
-            .team-grid {
-                max-width: 900px;
-            }
-            .team-member {
-                flex: 0 1 180px;
-            }
-        }
-
-        @media (max-width: 900px) {
-            .team-grid {
-                max-width: 600px;
-                gap: 1.5rem;
-            }
-            .team-member {
-                flex: 0 1 160px;
-            }
-            .team-img {
-                width: 100px;
-                height: 100px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .team-grid {
-                max-width: 300px;
-                gap: 1rem;
-            }
-            .team-member {
-                flex: 0 1 140px;
-            }
-            .team-img {
-                width: 90px;
-                height: 90px;
-            }
-            .team-name {
-                font-size: 0.9rem;
-            }
-            .team-role {
-                font-size: 0.8rem;
-            }
-        }
-
-        @keyframes fadeOut {
-            from {
-                opacity: 1;
-            }
-            to {
-                opacity: 0;
-                visibility: hidden;
-            }
-        }
-
-        .fade-out {
-            animation: fadeOut 0.5s ease-out forwards;
-        }
-
-        @keyframes fadeOutArrow {
-            from {
-                opacity: 1;
-            }
-            to {
-                opacity: 0;
-            }
-        }
-
-        .arrow-fade-out {
-            animation: fadeOutArrow 0.3s ease-out forwards;
-        }
-
-        /* Add footer styling */
-        .site-footer {
-            margin-top: 50px;
-            padding: 20px 0;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #a0a0a0;
-            width: 100%;
-        }
-
-        .site-footer a {
-            color: #ffffff;
-            text-decoration: none;
-        }
-
-        .site-footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="./assets/main.css">
     <link rel="preconnect" href="https://github.com">
     <link rel="prefetch" href="https://github.com">
-
+    
+    <title>STUHI</title>
 </head>
 <body>
     <div class="container">
-        <img src="./assets/stuhi_white.png" alt="STUHI organization logo in white" class="logo fade-in">
+        <img src="./assets/images/stuhi_white.png" alt="STUHI organization logo in white" class="logo fade-in">
         <h1 class="slogan fade-in">Be Dumb or Be Curious;</h1>
         <h2 class="sub-slogan fade-in">What you lack in experience, make it up in curiosity</h2>
 
@@ -978,7 +55,7 @@
                         <div class="card-front">
                             <figure>
                                 <div class="img-bg"></div>
-                                <img src="./assets/events.jpeg" alt="Students participating in STUHI events and workshops">
+                                <img src="./assets/images/events.jpeg" alt="Students participating in STUHI events and workshops">
                                 <figcaption class="programs-caption">Events</figcaption>
                             </figure>
                             <ul>
@@ -990,7 +67,7 @@
                         <div class="card-back">
                             <figure>
                                 <div class="img-bg"></div>
-                                <img src="./assets/events.jpeg" alt="Students participating in STUHI events and workshops">
+                                <img src="./assets/images/events.jpeg" alt="Students participating in STUHI events and workshops">
                             </figure>
                             <button class="learn-more-btn" data-url="https://lu.ma/stuhi">Learn More</button>
                             <div class="design-container">
@@ -1013,7 +90,7 @@
                         <div class="card-front">
                             <figure>
                                 <div class="img-bg"></div>
-                                <img src="./assets/c2a.jpg" alt="Students collaborating in STUHI educational programs">
+                                <img src="./assets/images/c2a.jpg" alt="Students collaborating in STUHI educational programs">
                                 <figcaption class="programs-caption">Programs</figcaption>
                             </figure>
                             <ul>
@@ -1025,7 +102,7 @@
                         <div class="card-back">
                             <figure>
                                 <div class="img-bg"></div>
-                                <img src="./assets/c2a.jpg" alt="Students collaborating in STUHI educational programs">
+                                <img src="./assets/images/c2a.jpg" alt="Students collaborating in STUHI educational programs">
                             </figure>
                             <button class="learn-more-btn" data-url="https://lu.ma/stuhi">Learn More</button>
                             <div class="design-container">
@@ -1048,7 +125,7 @@
                         <div class="card-front">
                             <figure>
                                 <div class="img-bg"></div>
-                                <img src="./assets/community.jpg" alt="STUHI community members working together">
+                                <img src="./assets/images/community.jpg" alt="STUHI community members working together">
                                 <figcaption class="programs-caption">Community</figcaption>
                             </figure>
                             <ul>
@@ -1060,7 +137,7 @@
                         <div class="card-back">
                             <figure>
                                 <div class="img-bg"></div>
-                                <img src="./assets/community.jpg" alt="STUHI community members working together">
+                                <img src="./assets/images/community.jpg" alt="STUHI community members working together">
                             </figure>
                             <button class="learn-more-btn" data-url="https://lu.ma/stuhi">Learn More</button>
                             <div class="design-container">
@@ -1089,27 +166,27 @@
                 <div class="team-grid">
 
                     <div class="team-member">
-                        <img class="team-img" src="./assets/team-images/Caeden.jpeg" alt="Caeden Noel">
+                        <img class="team-img" src="./assets/images/team-images/Caeden.jpeg" alt="Caeden Noel">
                         <p class="team-name">Caeden Noel</p>
                         <p class="team-role">Handler</p>
                     </div>
                     <div class="team-member">
-                        <img class="team-img" src="./assets/team-images/Ivar.jpeg" alt="Ivar Akerholm">
+                        <img class="team-img" src="./assets/images/team-images/Ivar.jpeg" alt="Ivar Akerholm">
                         <p class="team-name">Ivar Akerholm</p>
                         <p class="team-role">C2A Handler</p>
                     </div>
                     <div class="team-member">
-                        <img class="team-img" src="./assets/team-images/Aada.jpeg" alt="Aada Rissanen">
+                        <img class="team-img" src="./assets/images/team-images/Aada.jpeg" alt="Aada Rissanen">
                         <p class="team-name">Aada Rissanen</p>
                         <p class="team-role">Marketing Handler</p>
                     </div>
                     <div class="team-member">
-                        <img class="team-img" src="./assets/team-images/Yusuf.jpeg" alt="Yusuf Aristil">
+                        <img class="team-img" src="./assets/images/team-images/Yusuf.jpeg" alt="Yusuf Aristil">
                         <p class="team-name">Yusuf Aristil</p>
                         <p class="team-role">Brand Handler</p>
                     </div>
                     <div class="team-member">
-                        <img class="team-img" src="./assets/personplaceholder.svg" alt="Aino Kivistö">
+                        <img class="team-img" src="./assets/images/personplaceholder.svg" alt="Aino Kivistö">
                         <p class="team-name">Aino Kivistö</p>
                         <p class="team-role">Ops Handler</p>
                     </div>
@@ -1122,10 +199,10 @@
             <h2>Contact Us</h2>
             <div class="contact-items">
                 <a href="https://instagram.com/stuhi.hq/" class="contact-item" target="_blank" rel="noopener">
-                    <img src="./assets/instagrambw.png" alt="STUHI Instagram profile - Follow us for updates">
+                    <img src="./assets/images/instagrambw.png" alt="STUHI Instagram profile - Follow us for updates">
                 </a>
                 <a href="mailto:team@stuhi.org" class="contact-item" target="_blank">
-                    <img src="./assets/mail.svg" alt="Email icon - Contact STUHI via email">
+                    <img src="./assets/images/mail.svg" alt="Email icon - Contact STUHI via email">
                 </a>
             </div>
         </section>

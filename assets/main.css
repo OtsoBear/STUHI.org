@@ -397,11 +397,13 @@ a:hover {
     width: 150px; /* Fixed width */
 }
 
-.team-section .team-member img {
+.team-section .team-member img,
+.team-img {
     width: 7rem;
     height: 7rem;
     object-fit: cover;
     border-radius: 0.5rem;
+    display: block;
 }
 
 .team-section .team-member p {
